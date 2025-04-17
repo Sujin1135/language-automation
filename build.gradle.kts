@@ -1,9 +1,10 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.dependency.management)
-    alias(libs.plugins.kotlin.jpa)
     `java-test-fixtures`
 }
 
@@ -16,19 +17,48 @@ java {
     }
 }
 
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 }
 
-dependencies {
-    implementation(libs.spring.web)
-    implementation(libs.bundles.db)
-    implementation(libs.jackson.module.kotlin)
-    implementation(libs.kotlin.reflect)
+subprojects {
+    apply(
+        plugin =
+            rootProject.libs.plugins.kotlin.jvm
+                .get()
+                .pluginId,
+    )
+    apply(
+        plugin =
+            rootProject.libs.plugins.kotlin.spring
+                .get()
+                .pluginId,
+    )
+    apply(
+        plugin =
+            rootProject.libs.plugins.spring.boot
+                .get()
+                .pluginId,
+    )
+    apply(
+        plugin =
+            rootProject.libs.plugins.dependency.management
+                .get()
+                .pluginId,
+    )
+    apply(plugin = "java-test-fixtures")
 
-    testImplementation(libs.bundles.test)
+    dependencies {
+        implementation(rootProject.libs.spring.web)
+        implementation(rootProject.libs.jackson.module.kotlin)
+        implementation(rootProject.libs.kotlin.reflect)
 
-    testRuntimeOnly(libs.junit.launcher)
+        testImplementation(rootProject.libs.bundles.test)
+
+        testRuntimeOnly(rootProject.libs.junit.launcher)
+    }
 }
 
 kotlin {
@@ -45,4 +75,12 @@ allOpen {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.getByName<BootJar>("bootJar") {
+    enabled = false
+}
+
+tasks.getByName<Jar>("jar") {
+    enabled = true
 }

@@ -4,7 +4,7 @@ spring-boot-starter = "3.4.3"
 dependency-management = "1.1.7"
 mockk = "1.13.17"
 jackson-module-kotlin = "2.18.2"
-junit-jupiter = "5.11.4"
+testcontainers = "1.20.5"
 junit-launcher = "1.11.4"
 
 [plugins]
@@ -23,9 +23,9 @@ kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref =
 kotlin-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", version.ref = "kotlin" }
 spring-testcontainers = { module = "org.springframework.boot:spring-boot-testcontainers", version.ref = "spring-boot-starter" }
 jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson-module-kotlin" }
-junit-jupiter = { module = "org.testcontainers:junit-jupiter", version.ref = "junit-jupiter" }
+testcontainers-jupiter = { module = "org.testcontainers:junit-jupiter", version.ref = "testcontainers" }
 junit-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-launcher" }
 
 [bundles]
 db = ["spring-jdbc", "spring-jpa"]
-test = ["spring-test", "spring-testcontainers", "kotlin-junit5", "junit-jupiter"]
+test = ["spring-test", "spring-testcontainers", "kotlin-junit5", "testcontainers-jupiter"]
