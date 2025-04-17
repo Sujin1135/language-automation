@@ -1,0 +1,31 @@
+[versions]
+kotlin = "2.1.10"
+spring-boot-starter = "3.4.3"
+dependency-management = "1.1.7"
+mockk = "1.13.17"
+jackson-module-kotlin = "2.18.2"
+junit-jupiter = "5.11.4"
+junit-launcher = "1.11.4"
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot-starter" }
+dependency-management = { id = "io.spring.dependency-management", version.ref = "dependency-management" }
+kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
+
+[libraries]
+spring-jdbc = { module = "org.springframework.boot:spring-boot-starter-data-jdbc", version.ref = "spring-boot-starter" }
+spring-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring-boot-starter" }
+spring-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring-boot-starter" }
+spring-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "spring-boot-starter" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlin-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", version.ref = "kotlin" }
+spring-testcontainers = { module = "org.springframework.boot:spring-boot-testcontainers", version.ref = "spring-boot-starter" }
+jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson-module-kotlin" }
+junit-jupiter = { module = "org.testcontainers:junit-jupiter", version.ref = "junit-jupiter" }
+junit-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-launcher" }
+
+[bundles]
+db = ["spring-jdbc", "spring-jpa"]
+test = ["spring-test", "spring-testcontainers", "kotlin-junit5", "junit-jupiter"]
