@@ -39,5 +39,5 @@ out/
 ### Kotlin ###
 .kotlin
 
-### Local Postgresql
-postgres-data/
+### Local DB ###
+db/

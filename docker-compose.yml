@@ -1,11 +1,14 @@
+version: '3.7'
 services:
-  postgres:
-    image: postgres:17
-    volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+  db:
+    image: mysql:8.0
+    container_name: language-automation
+    restart: always
     ports:
-      - "5432:5432"
+      - "3306:3306"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password123!
-      POSTGRES_DB: language
+      MYSQL_ROOT_PASSWORD: password123!
+      MYSQL_DATABASE: language
+    volumes:
+      - ./db/mysql/data:/var/lib/mysql
+      - ./db/mysql/init:/docker-entrypoint-initdb.d

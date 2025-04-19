@@ -6,7 +6,7 @@ mockk = "1.13.17"
 jackson-module-kotlin = "2.18.2"
 testcontainers = "1.20.5"
 junit-launcher = "1.11.4"
-postgresql = "42.7.5"
+mysql = "9.2.0"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -26,8 +26,8 @@ spring-testcontainers = { module = "org.springframework.boot:spring-boot-testcon
 jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson-module-kotlin" }
 testcontainers-jupiter = { module = "org.testcontainers:junit-jupiter", version.ref = "testcontainers" }
 junit-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-launcher" }
-postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+mysql = { module = "com.mysql:mysql-connector-j", version.ref = "mysql" }
 
 [bundles]
-db = ["spring-jdbc", "spring-jpa", "postgresql"]
+db = ["spring-jdbc", "spring-jpa", "mysql"]
 test = ["spring-test", "spring-testcontainers", "kotlin-junit5", "testcontainers-jupiter"]

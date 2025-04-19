@@ -1,10 +1,10 @@
 spring:
   jpa:
-    database: postgresql
+    database: mysql
     hibernate:
       ddl-auto: create
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_DATABASE:language}
-    username: ${DB_USERNAME:postgres}
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_DATABASE:language}
+    username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:password123!}
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
