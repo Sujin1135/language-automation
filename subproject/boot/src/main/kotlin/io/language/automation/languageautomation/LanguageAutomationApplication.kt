@@ -7,5 +7,9 @@ import org.springframework.boot.runApplication
 class LanguageAutomationApplication
 
 fun main(args: Array<String>) {
+    System.setProperty(
+        "spring.config.name",
+        "application,application-infrastructure",
+    )
     runApplication<LanguageAutomationApplication>(*args)
 }
